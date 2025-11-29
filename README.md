@@ -1,7 +1,7 @@
-<h1 align="center">Blockamok Remix</h1>
+<h1 align="center">Blockamok Remix²</h1>
 
 <p align="center"><b>A CPU-only, from-scratch 3D game written in C, where you dodge blocks<br>
-Available for PC, Linux, Android, Switch, Wii U, Wii, GameCube, 3DS, PSP, and Vita</b></p>
+Available for PC, Linux, macOS, Android, iOS, NES, SNES, Switch, Wii U, Wii, GameCube, 3DS, PS1, PS2, PS3, PSP, PS Vita and more to come!</b></p>
 
 <p align="center">You accidentally fly your spaceship into a wormhole. To your shock, you find yourself in an alternate dimension filled with blocks. The throttle on your spaceship is broken and keeps increasing the speed. How far can you make it?</p>
 
@@ -9,7 +9,7 @@ Available for PC, Linux, Android, Switch, Wii U, Wii, GameCube, 3DS, PSP, and Vi
 
 ## Background
 
-Blockamok Remix is a significant update to [Blockamok](https://github.com/carltheperson/blockamok), a game originally made by Carl Riis to _"challenge [himself] to create a 3D game without any pre-made 3D engine or utilities"_.
+Blockamok Remix² is an enhancement to [Blockamok Remix](https://github.com/Mode8fx/blockamok) made to support basically every jailbreak-supported consoles and other systems with some other minor improvements and features, which itself is a significant improvement to [Blockamok](https://github.com/carltheperson/blockamok), a game originally made by Carl Riis to _"challenge [himself] to create a 3D game without any pre-made 3D engine or utilities"_.
 
 This version adds many improvements including:
 - Widescreen
@@ -21,11 +21,11 @@ This version adds many improvements including:
 - Scoring system polish
 - High score saving
 - Console ports
-- Performance improvements for weaker hardware [(see performance metrics comparing Remix v1.0 to v1.1 here)](https://github.com/Mode8fx/blockamok/blob/main/Console%20Performance%20Metrics%20v1.0%20to%20v1.1.png)
+- Performance improvements for weaker hardware [(see performance metrics comparing Remix v1.0 to v1.1 here)](https://github.com/SSMG4/blockamok-remix2/blob/main/Console%20Performance%20Metrics%20v1.0%20to%20v1.1.png)
 
 ## How can I play it?
 
-[Check the latest release here.](https://github.com/Mode8fx/blockamok/releases)
+[Check the latest release here.](https://github.com/SSMG4/blockamok-remix2/releases)
 
 Keep in mind that due to hardware and library differences, this game runs better on some systems than others, and it's not necessarily determined by the power of the system. For example, the GameCube and Wii versions both run better than Wii U.
 
@@ -65,6 +65,8 @@ Install devkitPro and SDL2 for 3DS, then run `make -f Makefiles/Makefile_3ds`.
 Install VitaSDK, then build with CMake. I've included a `make_vita.sh` file for convenience once you have everything installed.
 #### PSP
 Install [the PSPDEV toolchain](https://pspdev.github.io/), which should also come with SDL2, SDL2_ttf, and SDL2_mixer (Linux or WSL is strongly recommended), then run `make -f Makefiles/Makefile_psp`.
+
+Other compilation processes will be written later
 
 ## License
 
