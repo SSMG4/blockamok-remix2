@@ -1,0 +1,46 @@
+name: Desktop and Web Building
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  desktop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: seanmiddleditch/gha-setup-ninja@v4
+      - name: Install SDL2 deps
+        run: sudo apt-get update && sudo apt-get install -y libsdl2-dev libsdl2-mixer-dev libsdl2-ttf-dev
+      - name: Configure
+        run: cmake --preset desktop-release
+      - name: Build
+        run: cmake --build --preset desktop
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: desktop-binaries
+          path: build-desktop/blockamokremix
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup emscripten
+        uses: mymindstorm/setup-emsdk@v14
+        with:
+          version: latest
+          actions-cache-folder: emsdk-cache
+      - uses: seanmiddleditch/gha-setup-ninja@v4
+      - name: Configure
+        run: emcmake cmake -B build-web -DCMAKE_BUILD_TYPE=Release -DEMSCRIPTEN=ON
+      - name: Build
+        run: emmake cmake --build build-web --config Release
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-bundle
+          path: |
+            build-web/blockamokremix.html
+            build-web/blockamokremix.js
+            build-web/blockamokremix.wasm
