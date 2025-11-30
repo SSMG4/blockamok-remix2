@@ -43,7 +43,7 @@ This Markdown is made to list all platforms supported by Blockamok Remix² as we
 | PS Vita | Stable Releases | 🟦 |
 | Raspberry Pi | Coming Soon | None |
 | SNES | Coming Soon | None |
-| Switch | Stable Releases | Unknown, needs testing |
+| Switch | Stable Releases | 🟦 |
 | Web (WASM) | In Development | ⬛ |
 | Wii | Stable Releases | 🟨 |
 | Wii U | Stable Releases | Unknown, needs testing |
