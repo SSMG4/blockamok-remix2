@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.5)
 project(blockamokremix C)
 
+if (NOT EMSCRIPTEN)
+  add_compile_options(
+    $<$<C_COMPILER_ID:GNU,Clang>:-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconversion>
+    $<$<CONFIG:Debug>:-fsanitize=address,undefined>
+  )
+  add_link_options($<$<CONFIG:Debug>:-fsanitize=address,undefined>)
+endif()
+
 add_executable(blockamokremix
 	"src/main.c"
 	"src/audio.c"
