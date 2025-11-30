@@ -10,6 +10,8 @@
 
 #define NUM_SONGS 5
 
+int volume_from_option(int opt); 
+
 extern void initAudio();
 extern void playMusicAtIndex(Sint8 index);
 extern void handleChangeSong();
