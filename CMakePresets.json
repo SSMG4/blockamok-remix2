@@ -1,0 +1,26 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "desktop-release",
+      "generator": "Ninja",
+      "binaryDir": "build-desktop",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      }
+    },
+    {
+      "name": "web-release",
+      "generator": "Ninja",
+      "binaryDir": "build-web",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "EMSCRIPTEN": "ON"
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "desktop", "configurePreset": "desktop-release" },
+    { "name": "web", "configurePreset": "web-release" }
+  ]
+}
