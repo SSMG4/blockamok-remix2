@@ -426,7 +426,9 @@ void initStaticMessages(SDL_Renderer *renderer) {
   if (compactView) {
     outlineSize_38 = 2;
   }
-  Sans_38 = TTF_OpenFontRW(rw, 1, textSize_38);
+  Sans_38 = TTF_OpenFontRW(rw, 0, textSize_38); 
+
+  SDL_RWclose(rw);
 
   initStaticMessages_Characters();
   initStaticMessages_TitleScreen();
