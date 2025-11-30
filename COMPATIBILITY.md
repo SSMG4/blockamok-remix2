@@ -45,7 +45,7 @@ This Markdown is made to list all platforms supported by Blockamok Remix² as we
 | SNES | Coming Soon | None |
 | Switch | Stable Releases | Unknown, needs testing |
 | Web (WASM) | In Development | ⬛ |
-| Wii | Stable Releases | Unknown, needs testing |
+| Wii | Stable Releases | 🟨 |
 | Wii U | Stable Releases | Unknown, needs testing |
 | Windows (10 - 11) | Stable Releases | 🟪 |
 | Windows (7 - 8.1) | Coming Soon | None |
