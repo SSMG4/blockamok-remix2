@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.5)
 project(blockamokremix C)
 
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+
 if (NOT EMSCRIPTEN)
   add_compile_options(
     $<$<C_COMPILER_ID:GNU,Clang>:-Wall;-Wextra;-Wpedantic;-Wshadow;-Wconversion>
