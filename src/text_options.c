@@ -455,11 +455,11 @@ static void optionCallback_Music() {
 }
 
 static void optionCallback_MusicVolume() {
-	Mix_VolumeMusic((int)(OPTION_MUSIC_VOLUME * MIX_MAX_VOLUME / 5.0f));
+	Mix_VolumeMusic(volume_from_option(OPTION_MUSIC_VOLUME));
 }
 
 static void optionCallback_SFXVolume() {
-	Mix_Volume(-1, (int)(OPTION_SFX_VOLUME * MIX_MAX_VOLUME / 5.0f));
+	Mix_Volume(-1, volume_from_option(OPTION_SFX_VOLUME));
 }
 
 void optionCallback_All() {
