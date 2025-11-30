@@ -22,7 +22,7 @@ This Markdown is made to list all platforms supported by Blockamok Remix² as we
 | GameBoy | Coming Soon | None |
 | GameBoy Advance / Advance SP | Coming Soon | None |
 | GameBoy Color | Coming Soon | None |
-| GameCube | Coming Soon | None |
+| GameCube | Stable Releases | 🟩 |
 | Haiku | Coming Soon | None |
 | Linux | Stable Releases | Unknown, needs testing |
 | macOS (Intel) | Coming Soon | None |
