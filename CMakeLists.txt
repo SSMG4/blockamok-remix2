@@ -200,6 +200,9 @@ if (EMSCRIPTEN)
   # We also preload config.ini into the virtual filesystem
   set(CMAKE_EXECUTABLE_SUFFIX ".html")
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -sUSE_SDL=2 -sUSE_SDL_MIXER=2 -sUSE_SDL_TTF=2")
+
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --shell-file web/index.html")
+  
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} \
     -sALLOW_MEMORY_GROWTH=1 \
     -sASSERTIONS=1 \
