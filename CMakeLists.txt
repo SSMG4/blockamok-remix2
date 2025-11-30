@@ -140,6 +140,72 @@ else()
 	INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2MIXER_INCLUDE_DIRS} ${SDL2TTF_INCLUDE_DIRS})
 	TARGET_LINK_LIBRARIES(${PROJECT_NAME} ${SDL2_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES})
 
+if (EMSCRIPTEN)
+  # Reuse PC code paths (resizable window, fullscreen callback, keyboard mapping)
+  add_definitions(-DPC)
+
+  # IMPORTANT: Ensure the target matches the main executable name
+  # If you change the target name elsewhere, update it here consistently
+  add_executable(blockamokremix
+    "src/main.c"
+    "src/audio.c"
+    "src/audio.h"
+    "src/config.c"
+    "src/config.h"
+    "src/draw.c"
+    "src/draw.h"
+    "src/game.c"
+    "src/game.h"
+    "src/game_init.c"
+    "src/game_init.h"
+    "src/general.c"
+    "src/general.h"
+    "src/input.c"
+    "src/input.h"
+    "src/text.c"
+    "src/text_options.c"
+    "src/text.h"
+    "src/audio/falling_people.c"
+    "src/audio/falling_people.h"
+    "src/audio/falling_up.c"
+    "src/audio/falling_up.h"
+    "src/audio/insanity.c"
+    "src/audio/insanity.h"
+    "src/audio/mano_-_darkness_in_the_night.c"
+    "src/audio/mano_-_darkness_in_the_night.h"
+    "src/audio/spaceranger_50k.c"
+    "src/audio/spaceranger_50k.h"
+    "src/audio/ding2_short.c"
+    "src/audio/ding2_short.h"
+    "src/audio/ding2_short_reversed.c"
+    "src/audio/ding2_short_reversed.h"
+    "src/audio/thunk.c"
+    "src/audio/thunk.h"
+    "src/audio/zoom3_short.c"
+    "src/audio/zoom3_short.h"
+    "src/fonts/Mono.c"
+    "src/fonts/Mono.h"
+  )
+
+  # Emscripten SDL ports
+  # -sUSE_SDL=2: enables SDL2
+  # -sUSE_SDL_MIXER=2: enables SDL_mixer
+  # -sUSE_SDL_TTF=2: enables SDL_ttf
+  # We also preload config.ini into the virtual filesystem
+  set(CMAKE_EXECUTABLE_SUFFIX ".html")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -sUSE_SDL=2 -sUSE_SDL_MIXER=2 -sUSE_SDL_TTF=2")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} \
+    -sALLOW_MEMORY_GROWTH=1 \
+    -sASSERTIONS=1 \
+    -sMODULARIZE=1 \
+    -sEXPORT_NAME=BlockamokRemix \
+    -sMAX_WEBGL_VERSION=2 \
+    -sMIN_WEBGL_VERSION=1 \
+    --preload-file config.ini@/config.ini")
+
+  # Optimize release builds
+  set_property(TARGET blockamokremix PROPERTY LINK_OPTIONS
+    "$<$<CONFIG:Release>:-O3;-flto>")
 endif()
 
 unset(WIIU CACHE)
