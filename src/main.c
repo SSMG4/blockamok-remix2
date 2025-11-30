@@ -199,7 +199,6 @@ int main(int arg, char *argv[]) {
   initStaticMessages(renderer);
   readSaveData(false);
   optionCallback_All();
-  playMusicAtIndex(OPTION_MUSIC);
   if (OPTION_FULLSCREEN) {
     optionCallback_Fullscreen(window);
   }
@@ -207,6 +206,8 @@ int main(int arg, char *argv[]) {
   prepareGame();
 
   Uint32 frameTime;
+
+  static Uint32 lastControllerEvent = 0;
 
   while (!quit) {
     last = now;
@@ -220,9 +221,12 @@ int main(int arg, char *argv[]) {
 				quit = true;
         break;
       case SDL_CONTROLLERDEVICEADDED:
-      case SDL_CONTROLLERDEVICEREMOVED:
-        controllerInit();
-        break;
+	  case SDL_CONTROLLERDEVICEREMOVED:
+  	    if (now - lastControllerEvent > 100) {
+    	  controllerInit();
+    	  lastControllerEvent = now;
+ 	    }
+  		break;
 #if defined(PC)
       case SDL_WINDOWEVENT:
         if (event.window.event == SDL_WINDOWEVENT_RESIZED) {
@@ -254,8 +258,9 @@ int main(int arg, char *argv[]) {
       case GAME_STATE_TITLE_SCREEN:
         if (keyPressed(INPUT_START)) {
           scoreVal = 0;
-          numLives = OPTION_LIVES + 1;
+          numLives = OPTION_LIVES;
           playSFX(SFX_ZOOM);
+		  playMusicAtIndex(OPTION_MUSIC);
           gameStart = SDL_GetTicks();
           invinceStart = gameStart;
           gameState = GAME_STATE_PLAYING;
