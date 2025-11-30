@@ -144,8 +144,6 @@ if (EMSCRIPTEN)
   # Reuse PC code paths (resizable window, fullscreen callback, keyboard mapping)
   add_definitions(-DPC)
 
-  # IMPORTANT: Ensure the target matches the main executable name
-  # If you change the target name elsewhere, update it here consistently
   add_executable(blockamokremix
     "src/main.c"
     "src/audio.c"
