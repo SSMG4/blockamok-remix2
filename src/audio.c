@@ -24,6 +24,12 @@ Mix_Chunk *sfx_thunk;
 Mix_Chunk *sfx_ding_a;
 Mix_Chunk *sfx_ding_b;
 
+int volume_from_option(int opt) {
+  if (opt <= 0) return 0;
+  if (opt >= 5) return MIX_MAX_VOLUME;
+  return (int)(opt * MIX_MAX_VOLUME / 5.0f);
+}
+
 void initAudio() {
 	Mix_VolumeMusic(128);
 	bgm_1 = Mix_LoadMUS_RW(SDL_RWFromConstMem(spaceranger_50k_xm, spaceranger_50k_xm_len), 1);
