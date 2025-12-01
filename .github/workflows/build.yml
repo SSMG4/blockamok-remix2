@@ -21,6 +21,10 @@ jobs:
         with:
           name: desktop-binaries
           path: build-desktop/blockamokremix
+      - name: Environment info
+        run: |
+          cmake --version
+          pkg-config --version || true
 
   web:
     runs-on: ubuntu-latest
