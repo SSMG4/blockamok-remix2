@@ -19,8 +19,11 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: desktop-binaries
-          path: build-desktop/blockamokremix
+          name: desktop-bundle
+          path: |
+            build-desktop/blockamokremix
+            config.ini
+            release-resources/**
       - name: Environment info
         run: |
           cmake --version
