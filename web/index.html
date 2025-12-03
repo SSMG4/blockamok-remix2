@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Blockamok Remix</title>
+</head>
+<body>
+  <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+  <script>
+    BlockamokRemix().then(Module => {
+      // Module is the instantiated runtime
+      console.log("Blockamok Remix initialized", Module);
+    });
+  </script>
+</body>
+</html>
