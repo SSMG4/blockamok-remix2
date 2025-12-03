@@ -6,9 +6,12 @@
 </head>
 <body>
   <canvas id="canvas" oncontextmenu="event.preventDefault()" tabindex=-1></canvas>
+
+  <!-- Emscripten will inject its generated JS here -->
+  {{{ SCRIPT }}}
+
   <script>
     BlockamokRemix().then(Module => {
-      // Module is the instantiated runtime
       console.log("Blockamok Remix initialized", Module);
     });
   </script>
