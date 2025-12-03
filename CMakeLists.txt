@@ -159,7 +159,7 @@ elseif (EMSCRIPTEN)
     -sEXPORT_NAME=BlockamokRemix \
     -sMAX_WEBGL_VERSION=2 \
     -sMIN_WEBGL_VERSION=1 \
-    --preload-file config.ini@/config.ini")
+    --preload-file ${CMAKE_SOURCE_DIR}/config.ini@/config.ini")
   # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --shell-file web/index.html")
   set_property(TARGET blockamokremix PROPERTY LINK_OPTIONS "$<$<CONFIG:Release>:-O3;-flto>")
 
@@ -173,6 +173,10 @@ else()
   PKG_SEARCH_MODULE(SDL2TTF REQUIRED SDL2_ttf>=2.0.0)
   INCLUDE_DIRECTORIES(${SDL2_INCLUDE_DIRS} ${SDL2MIXER_INCLUDE_DIRS} ${SDL2TTF_INCLUDE_DIRS})
   TARGET_LINK_LIBRARIES(blockamokremix ${SDL2_LIBRARIES} ${SDL2MIXER_LIBRARIES} ${SDL2TTF_LIBRARIES})
+endif()
+
+if (NOT EMSCRIPTEN)
+  target_link_libraries(blockamokremix m)
 endif()
 
 unset(WIIU CACHE)
