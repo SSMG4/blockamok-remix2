@@ -160,7 +160,7 @@ elseif (EMSCRIPTEN)
     -sMAX_WEBGL_VERSION=2 \
     -sMIN_WEBGL_VERSION=1 \
     --preload-file ${CMAKE_SOURCE_DIR}/config.ini@/config.ini")
-  # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --shell-file web/index.html")
+  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --shell-file ${CMAKE_SOURCE_DIR}/web/index.html")
   set_property(TARGET blockamokremix PROPERTY LINK_OPTIONS "$<$<CONFIG:Release>:-O3;-flto>")
 
 else()
